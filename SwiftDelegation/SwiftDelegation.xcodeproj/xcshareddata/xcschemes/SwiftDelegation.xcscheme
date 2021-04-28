@@ -38,16 +38,6 @@
                ReferencedContainer = "container:SwiftDelegation.xcodeproj">
             </BuildableReference>
          </TestableReference>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "D9E64684262E4D9600531C24"
-               BuildableName = "SwiftDelegationUITests.xctest"
-               BlueprintName = "SwiftDelegationUITests"
-               ReferencedContainer = "container:SwiftDelegation.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
       </Testables>
    </TestAction>
    <LaunchAction
