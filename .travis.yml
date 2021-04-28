@@ -6,4 +6,4 @@ language: swift
 osx_image: xcode12.2
 xcode_project: SwiftDelegation/SwiftDelegation.xcodeproj
 xcode_scheme: SwiftDelegationTests
-xcode_destination: platform=iOS Simulator, OS=14.0, name=iPhone 11
+xcode_destination: platform=iOS Simulator,OS=11.3,name=iPhone X
