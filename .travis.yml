@@ -5,5 +5,5 @@ branches:
 language: swift
 osx_image: xcode12.2
 xcode_project: SwiftDelegation/SwiftDelegation.xcodeproj
-xcode_scheme: SwiftDelegationTests
+xcode_scheme: SwiftDelegation
 xcode_destination: platform=iOS Simulator,OS=11.3,name=iPhone X
