@@ -4,3 +4,5 @@ branches:
     - feature/delegation
 language: swift
 osx_image: xcode12.2
+xcode_project: SwiftDelegation/SwiftDelegation.xcodeproj
+xcode_scheme: SwiftDelegationTests
