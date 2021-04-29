@@ -33,125 +33,105 @@ The purposes of this repo are:
 
 ### IDE Platforms:
 
-- [IntelliJ IDEA Ultimate 2020.3.2](https://www.jetbrains.com/idea/)
 - [Xcode 12](https://developer.apple.com/xcode/)
+
+### CI/CD Platforms:
+
+- Travis CI
 
 ### Development Devices:
 
 - MacBook Pro (15 Inch, 2017)
 - iOS 14 Simulator
+- iPhone 12
 
 ---
 
 # Project Description
 
+The class project is based on a simple iOS mobile app that allows users to  
+create, read, update and delete "CRUD" profiles with minimal information and
+display all profiles in a list in the main screen. It uses native and
+integrated frameworks that are bundled with "Cocoa Touch" (the main framework  
+for iOS development.
 
 ### Application Requirements:
 
+- User must be able to create a profile
+- user must be able to edit a profile
+- User must be able to delete a profile
+- User must be able to display a profile and it's containing values
+- User must be able to see a list of all saved profiles
 
 ### Assumptions
 
+- Saving profiles uses the simplest storage available, "UserDefaults".  
+- No additional confirmation is needed for performing a transaction.
+- User can also delete a profile by swiping the profile row.
+- user can delete all the profiles at once.
+- A profile is constructed with username, name, last name and email values
+- Any of the profile's values can't be empty at profile creation time
+- All profile's values needs to be at least 2 characters in length
+- All profile's values can't begin with a number at profile creation time
+- The username is the only value that can't be edited
+- The username serves as a username and also as an identifier
+- The username is the only value that has an 6 character length requirement
+- The username can't contain any special characters (Symbols, punctuation)
+- The name and last name can't contain any Symbols
+- The email needs to contains 1 "@" symbol character as a requirement
 
-### Expected Feature Set:
+### Expected MVP Feature Set:
+
+- Create profile
+- Update profile
+- Display profile
+- Display all profiles as list in a table
+- Delete a single profile via swipe interaction
+- Delete a single profile via button interaction
+- Delete all the profiles via button interaction
+- Delete all the profiles via button performs with an table animation
+- Save profiles created and updated to device simplest storage available
 
 ---
 
-# How to compile the project
+# How to `Compile` the project
 
-We use Apache Maven to compile and run this project.
+In order to compile, Xcode is the only required tool. Xcode can be download  
+from the following official sources:  
 
-You need to install Apache Maven (https://maven.apache.org/)  on your system.
+- [Mac App Store](https://apps.apple.com/us/app/xcode/id497799835?mt=12)
+- [Apple's Developer website](https://developer.apple.com/download/more/).
 
-Type on the command line:
+After the download is completed, open the Xcode app located in your  
+applications folder (If you downloaded it from Apple's website then move it  
+to the applications folder). Xcode will start downloading additional tools.
 
-```bash
-mvn clean compile
-```
+When the additional tools download process gets completed, go to the repository  
+and double click the `SwiftDelegation.xcodeproj` project file.
 
-# How to create a binary runnable package
+# How to `Run`
 
+While Xcode is open with the `SwiftDelegation.xcodeproj` project, select the  
+iPhone 12 simulator on the top left device selection dropdown list. After  
+selecting the simulator, just hit the run/play button located in the top left  
+window of Xcode. Done!
 
-```bash
-mvn clean compile assembly:single
-```
+# Running the `Test` target
 
+Very similar to running the project, in the top left window of Xcode, click  
+and hold the run/play button and a tool-tip context popup with rise with more  
+options. Move the mouse pointer to the `Test` option while holding and then  
+release it. Done!
 
-# How to run
+# IMPORTANT NOTES
+Has integrated several **FREE** tools for "finding bug" and/or "check style"  
+tools for iOS development with Swift. This project has already all these  
+configurations manually set in the project scheme `SwiftDelegation`. Github  
+actions/workflows were disabled as I couldn't find a **FREE** official service  
+for CI/CD integrated in Github marketplace, and also I didn't had enough time   
+to create my own. So, the only external CI/CD service found was Travis CI.  
+A brief description is provided in the presentation to be submitted.
 
-```bash
-mvn -q clean compile exec:java -Dexec.executable="edu.bu.met.cs665.Main" -Dlog4j.configuration="file:log4j.properties"
-```
-
-We recommand the above command for running the Main Java executable.
-
-
-
-
-# Run all the unit test classes.
-
-
-```bash
-mvn clean compile test checkstyle:check  spotbugs:check
-```
-
-# Using Spotbugs to find bugs in your project
-
-To see bug detail using the Findbugs GUI, use the following command "mvn findbugs:gui"
-
-Or you can create a XML report by using  
-
-
-```bash
-mvn spotbugs:gui
-```
-
-or
-
-
-```bash
-mvn spotbugs:spotbugs
-```
-
-
-```bash
-mvn spotbugs:check
-```
-
-check goal runs analysis like spotbugs goal, and make the build failed if it found any bugs.
-
-
-For more info see
-https://spotbugs.readthedocs.io/en/latest/maven.html
-
-
-SpotBugs https://spotbugs.github.io/ is the spiritual successor of FindBugs.
-
-
-# Run Checkstyle
-
-CheckStyle code styling configuration files are in config/ directory. Maven checkstyle plugin is set to use google code style.
-You can change it to other styles like sun checkstyle.
-
-To analyze this example using CheckStyle run
-
-```bash
-mvn checkstyle:check
-```
-
-This will generate a report in XML format
-
-
-```bash
-target/checkstyle-checker.xml
-target/checkstyle-result.xml
-```
-
-and the following command will generate a report in HTML format that you can open it using a Web browser.
-
-```bash
-mvn checkstyle:checkstyle
-```
-
-```bash
-target/site/checkstyle.html
-```
+The Swift code written in this project **STRONGLY** follows the official  
+Swift Code style and guidelines, and also, the app conforms with Apple's Human  
+Interface Guidelines.
