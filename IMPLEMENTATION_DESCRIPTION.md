@@ -1,3 +1,52 @@
-# Implementation Description
+# Delegation Pattern Implementation Description
 
-In this application, I attempted to build an application that
+## Short Back Story
+In this application, I attempted to build an iOS mobile application that  
+adopts, promotes and forward the Delegation software design pattern. I used  
+the help of the platform, its tools and its frameworks. Firstly, I have applied  
+a "Delegation Forwarding" technique/approach I learned through experience and  
+time figuring out how to further improve the platforms frameworks and continue  
+with the intention of Apple engineers when they created "Cocoa Touch", which is  
+the main wrapper framework. Delegations is everywhere in the Apple development  
+ecosystem and I have been developing apps for iPhones/iPad, AppleTV and the Mac  
+for some years. And took me a while to understand and learn the the techniques  
+and approaches that works best for developing within Apple's platforms.
+
+## Long Back Story
+When I first started as a developer in the technology industry, I experienced lots of hardships while performing my work. Not because I was a bad developer performing poorly, but because there were a lots of issues on the software I worked on, not only on one job at a particular company, but the hardships were a lot around the work of other developers. I notice that most of the companies that I worked for were ran by services-driven business model and didn’t really had physical products, but offered services to companies that wanted solutions fast, cheap and presentable. I asked myself, “where was the quality portion standing?”. But, quality was not a big deal as long as the company achieved their main goal, “release first and earn 3, 4, 5 and even 6 times the profits”. The Quality portion was taken care later overtime in chunks over the next few releases. They called “performance and bugs improvements”. I was new to the team and really didn’t know about other developer tricks and slickness, I was very humble and willing to go over the extra mile doing my work, helping anyone that needed help and doing other’s work too. At the time, I was not sure, but most of the new, entry-level and/or junior-level developers were sent to work on maintenance order requests. That was it. Performing maintenance and fixing/improving mid-level and senior-level release code, what a journey… As times goes by and I performed task by task within order requests, I notice that the hardships I was going through were due to other developer poor performance. At the same time, I was so confused, I mean, I was recently graduated from college and I was looking at mid-level and senior-level developers as role models. At a point that, I started feeling depressed and disappointed. I asked myself, “why a mid or senior level planned, designed and developer such a poor performant code? Wouldn’t that be what I would expected from an entry or junior level developer like me?”. So, I decided to jump in and investigate what was going on with the poor performance of higher level developers and I found out that, most of these, at the company I worked for didn’t care much about software architecture and design. The were given a task and their duties were to find the technologies and achieve an MVP product as soon as possible for the business teams. Most of the good planning and designs brought in re-iterations of the software product at next releases. I ended up even more confused. So, I asked myself, “what can I do to make things more easier and smoother for me?”. First I needed to identify and understand very well the problem, or at one of the problems. I was part of the team that  worked on software solutions or apps within several Apple platforms, iOS, Mac, Mac extensions or plugins, and Apple TV. All of these platforms relied on old design patterns and techniques that were developed at NextStep, the original company with the first iteration of OS X, but with a different name that I don’t remember as of right now. The main framework, or perhaps the main component of the platform was a framework called “Foundation”, thus this was part of Cocoa a framework which was formed by a collection of frameworks that included Foundation, and it heavily relied on the MVC software development “paradigm” or software design “compound design pattern”. MVC was across the entire platform and mostly true MVC could be achieved in better ways with another Cocoa framework called “Cocoa Bindings”. At the time, I was working on the iOS platform and was recently new and very infant platform, but very robust as OS X and its foundations were brought by Cocoa and it was named Cocoa Touch. Now, after all this story, let me get straight to the problem. The hardships I was facing at my early days as developer were that, other developers were not focusing on software design, but instead on business goals, and as a result, the software development by our company was very poor in quality, as quality was a customer driver not a business driver. So, Cocoa Touch also heavily relied on MVC and the languages natively supported by the platform were C, C++ and, the preferred one at the time, Objectice-C. So, yeah, I was an Objective-C programmer at the time. It was fun and I loved Objective-C, kind off an odd syntax, but I was very comfortable and trained for the language. As I understood more the platform and the goals of Apple engineers that were maintaining Cocoa Touch, I understood more the problem that I was facing. So, I identified a problem that was already identified by other developers too that were working these and on other non-Apple platforms, meaning that other developers were facing the same hardships as me. So, the main problem was that a component of MVC, the controller component, in which is provided by Cocoa Touch as classes, were getting bloated, meaning thousands of lines of code were implemented by the mid and seniors developers at the company I worked for, in just the controller component, in a single file. Now, not only code was getting bloated but the technical documentation as well. In my investigation for this problem, I notice that other developers were frustrated too and trying to find common solutions that could resolve this issues of MVC. Developers at Microsoft were facing similar issues and they came up with MVVM which was an extension of MVC but the models had binding with the views and the views with the models, and the controller portion is split in half and added to the models and the views, and to be honest was kind off odd to understand as the MVVM paradigm was very new to the industry and not much technical documentation were available on the web. Also, there was MVP (mostly used in Java platforms nowadays but originally developed for .Net frameworks), and I thought, “oh man, I just and newbie guy here and things were getting extremely complicated” when it comes to understanding these paradigms and trying to make my work more easy and smooth. Then, I asked my self, “why can’t I use straight MVC through an easy and smooth ride while on my way?”… I tried and started developing against the poor performance of mid and senior developers. But then it really made my work a bit harder because now I had to do my work and correct other developer’s work. MVC is built from as combination of software design patterns, and in the Apple ecosystems and platforms, Apple uses Delegation (Extremely very similar to Proxy pattern) to provide app developers a way to extending their MVC frameworks and allows developers to construct behaviors or use default ones to further benefit from the platform and achieving business goals while maintaining a good software development architecture and also developing maintainable and scalable solutions. So, I opted in to try Delegation for an object that only manages a small portion of the  behavior of the controller portion of the MVC paradigm and iterate over all defined or implemented behaviors to be abstracted to these “Manager” objects that abstract the small behavior to individual object that acts as delegates. For example: Database Manager object, or as well UserInteractions Manager object. That being said, I want to clarify that I’m not bringing up a new design pattern or paradigm or compound design, but instead an approach to follow up with the approaches that were intended by of the engineers that designed Cocoa Touch frameworks, having an additional object that serves as an object for implementing and managing the behavior of the another object, which in terms is kind off like using the Proxy pattern.
+
+
+### USE-CASE:
+
+A controller component of an MVC application that is cluttered and bloated with implementations that can be delegated to another object for execution.  
+
+
+### SOLUTION:
+
+By using the Delegation design pattern, we can delegate forward the execution of a behavior, for a result or not, to an object that implements defined interfaces, therefor acting as delegate objects to help with decluttering and decoupling a bloated controller component from an MVC application. Also, this approach allows for behaviors to be scalable, reusable and modular.  
+
+
+### PROPOSITION:
+
+Develop an application to demonstrate the adoption of the Delegation design pattern by extending the controller's capabilities and delegate behaviors to associated class objects.  
+
+
+# RESOURCES:
+
+- Cocoa Core competencies. (2018, April 06). Retrieved April 18, 2021, from https://developer.apple.com/library/archive/documentation/General/Conceptual/DevPedia-CocoaCore/MVC.html#//apple_ref/doc/uid/TP40008195-CH32-SW1
+
+- Cocoa Core competencies. (2018, April 06). Retrieved April 18, 2021, from https://developer.apple.com/library/archive/documentation/General/Conceptual/DevPedia-CocoaCore/Delegation.html
+
+- Delegation. Retrieved April 18, 2021, from https://docs.swift.org/swift-book/LanguageGuide/Protocols.html#ID276
+
+- Core J2EE Patterns - Business Delegate. Retrieved April 18, 2021, from https://www.oracle.com/java/technologies/business-delegate.html
+
+- Delegation. Retrieved April 18, 2021, from https://java-design-patterns.com/patterns/delegation/
+
+- Delegation Pattern. (2020, March 10). Retrieved April 18, 2021, from https://en.wikipedia.org/wiki/Delegation_pattern
+
+- J. Bloch and C. Garrod, Carnegie Melon University, Institute for Software Research. Principles of Software Construction: Objects, Design, and Concurrency. Retrieved April 18, 2021, from https://www.cs.cmu.edu/~charlie/courses/17-214/2021-spring/slides/20210218-delegation-inheritance-design-patterns.pdf
+
+- A. Jaffee, Appcoda.com, (2018, February 28). Retrieved April 18, 2021, from https://www.appcoda.com/swift-delegate/
+
+- Best-Practice Software Engineering: Delegation Pattern. (2013, October 4) Retrieved April 18, 2021, from http://best-practice-software-engineering.ifs.tuwien.ac.at/patterns/delegation.html
