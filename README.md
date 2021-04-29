@@ -4,6 +4,17 @@
 ### met-cs665-assignment-project-gchriswill
 
 ---
+## ⚠️ IMPORTANT NOTES FOR CLASS PROJECT (FINAL ASSIGNMENT) ⚠️ :
+
+Please note that the Delegation Design Pattern is applied to the  
+`feature/delegation` branch only. The `master` branch only contains the raw  
+project without the manual application of the pattern. This approach will help  
+to preserve the full state of a raw mobile app that was implemented without any  
+pattern in mind, and also, will help the reviewer to review the technique by  
+having available a branch diff between the raw and applied pattern versions.  
+Therefore, in order to review the applied delegation pattern, the reviewer will  
+need to checkout the `feature/delegation` branch and proceed with the review  
+accordingly.
 
 ## Repository:
 
