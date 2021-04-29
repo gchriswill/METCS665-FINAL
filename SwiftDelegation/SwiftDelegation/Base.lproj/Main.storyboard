@@ -52,7 +52,7 @@
                             </tableViewCell>
                         </prototypes>
                         <connections>
-                            <outlet property="dataSource" destination="8wd-M3-N6e" id="no7-LL-FpQ"/>
+                            <outlet property="dataSource" destination="u1P-zD-GMN" id="Dan-Gd-EoO"/>
                             <outlet property="delegate" destination="8wd-M3-N6e" id="hKa-To-Dln"/>
                         </connections>
                     </tableView>
@@ -73,8 +73,12 @@
                         </barButtonItem>
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="dataSource" destination="u1P-zD-GMN" id="wg8-J6-DPr"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vby-yJ-ayM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <customObject id="u1P-zD-GMN" customClass="ProfileTableViewDataSource" customModule="SwiftDelegation" customModuleProvider="target"/>
                 <exit id="t67-HM-0yU" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="1792.753623188406" y="197.54464285714286"/>
@@ -268,7 +272,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="g8G-Zf-i0Y"/>
+        <segue reference="2dU-Fo-4Kb"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="person.fill" catalog="system" width="128" height="120"/>

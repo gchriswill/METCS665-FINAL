@@ -8,30 +8,40 @@
 import UIKit
 
 /**
+ DELEGATION COMPONENT: The delegate/data-source association holder in form of a controller
+ 
  A class for managing and controlling the views and data of the table list.
+ This object hold the reference of the delegate/data-source and also holds the view object that relies on the behavior for presenting the data.
+ The binding of the delegate is made through a storyboard object and referenced/associated here as an outlet binder.
  */
 class ProfilesTableViewController: UITableViewController, UIAdaptivePresentationControllerDelegate {
     
     // The key id for storing the data
     public static let keyId = "edu.bu.gchriswgm.SwiftDelegation.UserDefaults.profiles.KEY"
     
-    // The collectiong for holding the data at runtime
-    var profiles: [Data] = [Data]()
+    /**
+     DELEGATION COMPONENT: The delegate/data-source associated object.
+     
+     This propety holds the association/reference in form of a property outlet that is linked or binded via the storyboard.
+     We can held it as strong reference due to the fact that ARC will manage and release when needed.
+     */
+    @IBOutlet var dataSource: ProfileTableViewDataSource!
     
     // The binder action to return to this controller and calling a refresh of the data
     @IBAction func profilesUnwindSegue(_ sender: UIStoryboardSegue) {
         
         if let pvc = sender.destination as? ProfilesTableViewController {
             
-            pvc.profiles = UserDefaults.standard.array(forKey: ProfilesTableViewController.keyId) as? [Data] ?? [Data]()
+            pvc.dataSource.profiles = UserDefaults.standard.array(forKey: ProfilesTableViewController.keyId) as? [Data] ?? [Data]()
             pvc.tableView.reloadData()
         }
     }
     
     // The bidner action to clear all the data
     @IBAction func clearAllAction(_ sender: UIBarButtonItem) {
-        profiles.removeAll()
-        UserDefaults.standard.setValue(profiles, forKey: ProfilesTableViewController.keyId)
+        
+        dataSource.profiles.removeAll()
+        UserDefaults.standard.setValue(dataSource.profiles, forKey: ProfilesTableViewController.keyId)
         tableView.reloadSections([0], with: .automatic)
     }
     
@@ -39,7 +49,7 @@ class ProfilesTableViewController: UITableViewController, UIAdaptivePresentation
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        profiles = UserDefaults.standard.array(forKey: ProfilesTableViewController.keyId) as? [Data] ?? [Data]()
+        dataSource.profiles = UserDefaults.standard.array(forKey: ProfilesTableViewController.keyId) as? [Data] ?? [Data]()
         self.tableView.reloadData()
     }
     
@@ -52,57 +62,6 @@ class ProfilesTableViewController: UITableViewController, UIAdaptivePresentation
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
-    }
-    
-    // Potential usecase for a Delegation for the behavior
-    // A default native delegate method that gets called for determining the sections of the table
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
-    }
-    
-    // Potential usecase for a Delegation for the behavior
-    // A default native delegate method that gets called for every section of the table
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return profiles.count
-    }
-    
-    // Potential usecase for a Delegation for the behavior
-    // A default native delegate method that gets called for every row in the table
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        // Potential usecase for a Delegation or Factory Method pattern for the behavior of cell configuration with Profile class
-        let identifier = "edu.bu.chriswgm.ProfileTableViewCell.profilecell"
-        let cell = tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath)
-        
-        if let profile = try? JSONDecoder().decode(Profile.self, from: profiles[indexPath.row]) {
-            
-            cell.textLabel?.text = profile.username
-            cell.detailTextLabel?.text = "\(profile.name) \(profile.lastname) : \(profile.email)"
-        }
-        
-        return cell
-    }
-    
-    // Potential usecase for a Delegation for the behavior
-    // A default native delegate method that gets called to confirm that the user can swipe to delete
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        return true
-    }
-    
-    // Potential usecase for a Delegation for the behavior
-    // A default native delegate method that gets called when the user swipes to delete
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            
-            if profiles.indices.contains(indexPath.row) {
-                
-                profiles.remove(at: indexPath.row)
-                
-                UserDefaults.standard.setValue(profiles, forKey: ProfilesTableViewController.keyId)
-                
-                tableView.deleteRows(at: [indexPath], with: .fade)
-            }
-        }
     }
     
     // Potential usecase for a Delegation for the behavior
@@ -134,11 +93,11 @@ class ProfilesTableViewController: UITableViewController, UIAdaptivePresentation
                 return
             }
             
-            guard pvc.profiles.indices.contains(indexPath.row) else {
+            guard pvc.dataSource.profiles.indices.contains(indexPath.row) else {
                 return
             }
             
-            guard  let profile = try? JSONDecoder().decode(Profile.self, from: pvc.profiles[indexPath.row]) else {
+            guard  let profile = try? JSONDecoder().decode(Profile.self, from: pvc.dataSource.profiles[indexPath.row]) else {
                 return
             }
             
@@ -154,7 +113,7 @@ class ProfilesTableViewController: UITableViewController, UIAdaptivePresentation
             
             let dataArray = UserDefaults.standard.array(forKey: ProfilesTableViewController.keyId) as? [Data] ?? [Data]()
             
-            profilesController.profiles = dataArray
+            profilesController.dataSource.profiles = dataArray
             profilesController.tableView.reloadData()
         }
     }
