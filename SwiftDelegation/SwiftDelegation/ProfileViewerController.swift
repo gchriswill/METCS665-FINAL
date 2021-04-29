@@ -7,13 +7,18 @@
 
 import UIKit
 
+/**
+ A controller class for managing the views and data for the data presentation screen of a single profile
+ */
 class ProfileViewerController: UIViewController, UIAdaptivePresentationControllerDelegate {
     
-    var profile: Profile?
+    // Binder Outlets for linking the accessed views to the controller
+    // Basically this properties are the association part of the views to the controller
     @IBOutlet var nameLabel: UILabel!
     @IBOutlet var lastNameLabel: UILabel!
     @IBOutlet var emailLabel: UILabel!
     
+    // The binder action to return to this controller and calling a refresh of the data
     @IBAction func viewerUnwindSegue(_ sender: UIStoryboardSegue) {
         
         if let viewer = sender.destination as? ProfileViewerController {
@@ -29,6 +34,7 @@ class ProfileViewerController: UIViewController, UIAdaptivePresentationControlle
         }
     }
     
+    // The binder action to delete a single data point profile
     @IBAction func profileDeleteAction(_ sender: UIBarButtonItem) {
         
         deleteProfile()
@@ -36,6 +42,10 @@ class ProfileViewerController: UIViewController, UIAdaptivePresentationControlle
         self.performSegue(withIdentifier: "edu.bu.chriswgm.UIStoryboardSegue.unwind.profiles2", sender: self)
     }
     
+    // The profile data object for temporary holding
+    var profile: Profile?
+    
+    // Default native Life cycle method
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -47,6 +57,8 @@ class ProfileViewerController: UIViewController, UIAdaptivePresentationControlle
         emailLabel.text = profile?.email
     }
     
+    // Potential usecase for a Delegation for the behavior
+    // A default native method that triggers prior navigation to another screen
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         if let editor = segue.destination as? ProfileEditorController {
@@ -65,6 +77,7 @@ class ProfileViewerController: UIViewController, UIAdaptivePresentationControlle
         }
     }
     
+    // The function that executes the deletion of a single data point 
     func deleteProfile() {
         // Potential usecase for a Delegation pattern for the behavior of cell configuration with Profile class
         var profiles = UserDefaults.standard.array(forKey: ProfilesTableViewController.keyId) as? [Data] ?? [Data]()
