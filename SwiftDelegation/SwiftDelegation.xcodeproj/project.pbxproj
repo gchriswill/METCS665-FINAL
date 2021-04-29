@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		D99BA882262EB7F900B9BB1C /* ProfileDataValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D99BA881262EB7F900B9BB1C /* ProfileDataValidator.swift */; };
-		D99BA887262F73FF00B9BB1C /* ProfileEditorActivator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D99BA886262F73FF00B9BB1C /* ProfileEditorActivator.swift */; };
 		D9A13AF0263A80B5002AAA49 /* ProfileTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9A13AEF263A80B5002AAA49 /* ProfileTableViewDataSource.swift */; };
 		D9A13AF2263A8985002AAA49 /* ProfilesTableViewControllerPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9A13AF1263A8985002AAA49 /* ProfilesTableViewControllerPresenter.swift */; };
 		D9E64668262E4D9200531C24 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9E64667262E4D9200531C24 /* AppDelegate.swift */; };
@@ -37,7 +36,6 @@
 
 /* Begin PBXFileReference section */
 		D99BA881262EB7F900B9BB1C /* ProfileDataValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileDataValidator.swift; sourceTree = "<group>"; };
-		D99BA886262F73FF00B9BB1C /* ProfileEditorActivator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileEditorActivator.swift; sourceTree = "<group>"; };
 		D9A13AEF263A80B5002AAA49 /* ProfileTableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTableViewDataSource.swift; sourceTree = "<group>"; };
 		D9A13AF1263A8985002AAA49 /* ProfilesTableViewControllerPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilesTableViewControllerPresenter.swift; sourceTree = "<group>"; };
 		D9E64664262E4D9200531C24 /* SwiftDelegation.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftDelegation.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -107,7 +105,6 @@
 				D9E646B2262E611700531C24 /* ProfileEditorController.swift */,
 				D99BA881262EB7F900B9BB1C /* ProfileDataValidator.swift */,
 				D9E646C8262E929D00531C24 /* ProfileDataVerificationDelegate.swift */,
-				D99BA886262F73FF00B9BB1C /* ProfileEditorActivator.swift */,
 				D9E646BA262E612D00531C24 /* ProfileViewerController.swift */,
 				D9E6466D262E4D9200531C24 /* Main.storyboard */,
 				D9E64672262E4D9600531C24 /* LaunchScreen.storyboard */,
@@ -230,7 +227,6 @@
 				D9E646C9262E929D00531C24 /* ProfileDataVerificationDelegate.swift in Sources */,
 				D99BA882262EB7F900B9BB1C /* ProfileDataValidator.swift in Sources */,
 				D9E646AB262E60E400531C24 /* ProfilesTableViewController.swift in Sources */,
-				D99BA887262F73FF00B9BB1C /* ProfileEditorActivator.swift in Sources */,
 				D9E646A6262E60C700531C24 /* ProfileTableViewCell.swift in Sources */,
 				D9A13AF0263A80B5002AAA49 /* ProfileTableViewDataSource.swift in Sources */,
 				D9E64668262E4D9200531C24 /* AppDelegate.swift in Sources */,
