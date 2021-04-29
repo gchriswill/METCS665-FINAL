@@ -10,9 +10,9 @@ import UIKit
 class ProfileViewerController: UIViewController, UIAdaptivePresentationControllerDelegate {
     
     var profile: Profile?
-    @IBOutlet weak var nameLabel: UILabel!
-    @IBOutlet weak var lastNameLabel: UILabel!
-    @IBOutlet weak var emailLabel: UILabel!
+    @IBOutlet var nameLabel: UILabel!
+    @IBOutlet var lastNameLabel: UILabel!
+    @IBOutlet var emailLabel: UILabel!
     
     @IBAction func viewerUnwindSegue(_ sender: UIStoryboardSegue) {
         
@@ -31,23 +31,7 @@ class ProfileViewerController: UIViewController, UIAdaptivePresentationControlle
     
     @IBAction func profileDeleteAction(_ sender: UIBarButtonItem) {
         
-        // Potential usecase for a Delegation pattern for the behavior of cell configuration with Profile class
-        var profiles = UserDefaults.standard.array(forKey: ProfilesTableViewController.keyId) as? [Data] ?? [Data]()
-        
-        let firstIndexOcurrance = profiles.firstIndex(where: { (dataProfile) -> Bool in
-            
-            guard let profileData = try? JSONDecoder().decode(Profile.self, from: dataProfile) else {
-                return false
-            }
-            
-            return self.profile?.isEqual(profileData) ?? false
-        })
-        
-        if let index = firstIndexOcurrance {
-            
-            profiles.remove(at: index)
-            UserDefaults.standard.setValue(profiles, forKey: ProfilesTableViewController.keyId)
-        }
+        deleteProfile()
         
         self.performSegue(withIdentifier: "edu.bu.chriswgm.UIStoryboardSegue.unwind.profiles2", sender: self)
     }
@@ -78,6 +62,26 @@ class ProfileViewerController: UIViewController, UIAdaptivePresentationControlle
             editor.configuration = ProfileEditorController.EditorConfiguration(rawValue: segueIdentifier)
             
             editor.profile = viewer.profile
+        }
+    }
+    
+    func deleteProfile() {
+        // Potential usecase for a Delegation pattern for the behavior of cell configuration with Profile class
+        var profiles = UserDefaults.standard.array(forKey: ProfilesTableViewController.keyId) as? [Data] ?? [Data]()
+        
+        let firstIndexOcurrance = profiles.firstIndex(where: { (dataProfile) -> Bool in
+            
+            guard let profileData = try? JSONDecoder().decode(Profile.self, from: dataProfile) else {
+                return false
+            }
+            
+            return self.profile?.isEqual(profileData) ?? false
+        })
+        
+        if let index = firstIndexOcurrance {
+            
+            profiles.remove(at: index)
+            UserDefaults.standard.setValue(profiles, forKey: ProfilesTableViewController.keyId)
         }
     }
 }
