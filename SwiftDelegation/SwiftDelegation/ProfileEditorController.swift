@@ -9,11 +9,11 @@ import UIKit
 
 class ProfileEditorController: UIViewController {
     
-    @IBOutlet weak var userNameTextField: UITextField!
-    @IBOutlet weak var nameTextField: UITextField!
-    @IBOutlet weak var lastNameTextField: UITextField!
-    @IBOutlet weak var emailTextField: UITextField!
-    @IBOutlet weak var profileEditActionButton: UIButton!
+    @IBOutlet var userNameTextField: UITextField!
+    @IBOutlet var nameTextField: UITextField!
+    @IBOutlet var lastNameTextField: UITextField!
+    @IBOutlet var emailTextField: UITextField!
+    @IBOutlet var profileEditActionButton: UIButton!
     
     @IBAction func profileEditAction(_ sender: UIButton) {
         
