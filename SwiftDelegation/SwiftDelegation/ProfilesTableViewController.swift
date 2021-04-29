@@ -23,7 +23,7 @@ class ProfilesTableViewController: UITableViewController {
      DELEGATION COMPONENT: The delegate/data-source associated object.
      
      This propety holds the association/reference in form of a property outlet that is linked or binded via the storyboard.
-     We can held it as strong reference due to the fact that ARC will manage and release when needed.
+     We can held it as strong reference due to the fact that ARC will manage and release the reference.
      */
     @IBOutlet var dataSource: ProfileTableViewDataSource!
     
@@ -31,7 +31,7 @@ class ProfilesTableViewController: UITableViewController {
      DELEGATION COMPONENT: The delegate/data-source associated object.
      
      This propety holds the association/reference in form of a property outlet that is linked or binded via the storyboard.
-     We can held it as strong reference due to the fact that ARC will manage and release when needed.
+     We can held it as strong reference due to the fact that ARC will manage and release the reference.
      */
     @IBOutlet var presenter: ProfilesTableViewControllerPresenter!
     
