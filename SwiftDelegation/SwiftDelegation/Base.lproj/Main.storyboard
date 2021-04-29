@@ -75,10 +75,12 @@
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="dataSource" destination="u1P-zD-GMN" id="wg8-J6-DPr"/>
+                        <outlet property="presenter" destination="ald-Tc-VPM" id="4Xk-uU-ZHe"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vby-yJ-ayM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <customObject id="u1P-zD-GMN" customClass="ProfileTableViewDataSource" customModule="SwiftDelegation" customModuleProvider="target"/>
+                <customObject id="ald-Tc-VPM" customClass="ProfilesTableViewControllerPresenter" customModule="SwiftDelegation" customModuleProvider="target"/>
                 <exit id="t67-HM-0yU" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="1792.753623188406" y="197.54464285714286"/>

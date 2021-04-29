@@ -8,13 +8,13 @@
 import UIKit
 
 /**
- DELEGATION COMPONENT: The delegate/data-source association holder in form of a controller
+ DELEGATION COMPONENT: The delegate/data-source/presenter association holder in form of a controller
  
  A class for managing and controlling the views and data of the table list.
  This object hold the reference of the delegate/data-source and also holds the view object that relies on the behavior for presenting the data.
  The binding of the delegate is made through a storyboard object and referenced/associated here as an outlet binder.
  */
-class ProfilesTableViewController: UITableViewController, UIAdaptivePresentationControllerDelegate {
+class ProfilesTableViewController: UITableViewController {
     
     // The key id for storing the data
     public static let keyId = "edu.bu.gchriswgm.SwiftDelegation.UserDefaults.profiles.KEY"
@@ -26,6 +26,14 @@ class ProfilesTableViewController: UITableViewController, UIAdaptivePresentation
      We can held it as strong reference due to the fact that ARC will manage and release when needed.
      */
     @IBOutlet var dataSource: ProfileTableViewDataSource!
+    
+    /**
+     DELEGATION COMPONENT: The delegate/data-source associated object.
+     
+     This propety holds the association/reference in form of a property outlet that is linked or binded via the storyboard.
+     We can held it as strong reference due to the fact that ARC will manage and release when needed.
+     */
+    @IBOutlet var presenter: ProfilesTableViewControllerPresenter!
     
     // The binder action to return to this controller and calling a refresh of the data
     @IBAction func profilesUnwindSegue(_ sender: UIStoryboardSegue) {
@@ -76,7 +84,7 @@ class ProfilesTableViewController: UITableViewController, UIAdaptivePresentation
             
             editor.configuration = ProfileEditorController.EditorConfiguration(rawValue: segueIdentifier)
             
-            editor.presentationController?.delegate = self
+            editor.presentationController?.delegate = presenter
         }
         
         if let viewer = segue.destination as? ProfileViewerController {
@@ -102,19 +110,6 @@ class ProfilesTableViewController: UITableViewController, UIAdaptivePresentation
             }
             
             viewer.profile = profile
-        }
-    }
-    
-    // Potential usecase for a Delegation pattern for the behavior
-    // A native delegate method that will execute upon the user swipes down to dismiss
-    func presentationControllerWillDismiss(_ presentationController: UIPresentationController) {
-        
-        if let profilesController = presentationController.delegate as? ProfilesTableViewController {
-            
-            let dataArray = UserDefaults.standard.array(forKey: ProfilesTableViewController.keyId) as? [Data] ?? [Data]()
-            
-            profilesController.dataSource.profiles = dataArray
-            profilesController.tableView.reloadData()
         }
     }
 }
