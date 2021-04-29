@@ -138,10 +138,10 @@ options. Move the mouse pointer to the `Test` option while holding and then
 release it. Done!
 
 # IMPORTANT NOTES
-Has integrated several **FREE** tools for "finding bug" and/or "check style"  
+Xcode has integrated several **FREE** tools for "finding bug" and/or "checking style"  
 tools for iOS development with Swift. This project has already all these  
-configurations manually set in the project scheme `SwiftDelegation`. Github  
-actions/workflows were disabled as I couldn't find a **FREE** official service  
+configurations manually set in the project scheme `SwiftDelegation` and project settings.  
+Github actions/workflows were disabled as I couldn't find a **FREE** official service  
 for CI/CD integrated in Github marketplace, and also I didn't had enough time   
 to create my own. So, the only external CI/CD service found was Travis CI.  
 A brief description is provided in the presentation to be submitted.
