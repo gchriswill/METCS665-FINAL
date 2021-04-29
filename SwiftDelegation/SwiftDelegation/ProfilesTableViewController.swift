@@ -7,11 +7,18 @@
 
 import UIKit
 
+/**
+ A class for managing and controlling the views and data of the table list.
+ */
 class ProfilesTableViewController: UITableViewController, UIAdaptivePresentationControllerDelegate {
     
+    // The key id for storing the data
     public static let keyId = "edu.bu.gchriswgm.SwiftDelegation.UserDefaults.profiles.KEY"
+    
+    // The collectiong for holding the data at runtime
     var profiles: [Data] = [Data]()
     
+    // The binder action to return to this controller and calling a refresh of the data
     @IBAction func profilesUnwindSegue(_ sender: UIStoryboardSegue) {
         
         if let pvc = sender.destination as? ProfilesTableViewController {
@@ -21,12 +28,14 @@ class ProfilesTableViewController: UITableViewController, UIAdaptivePresentation
         }
     }
     
+    // The bidner action to clear all the data
     @IBAction func clearAllAction(_ sender: UIBarButtonItem) {
         profiles.removeAll()
         UserDefaults.standard.setValue(profiles, forKey: ProfilesTableViewController.keyId)
         tableView.reloadSections([0], with: .automatic)
     }
     
+    // Default native Life cycle method
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
@@ -34,6 +43,7 @@ class ProfilesTableViewController: UITableViewController, UIAdaptivePresentation
         self.tableView.reloadData()
     }
     
+    // Default native Life cycle method
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -45,16 +55,19 @@ class ProfilesTableViewController: UITableViewController, UIAdaptivePresentation
     }
     
     // Potential usecase for a Delegation for the behavior
+    // A default native delegate method that gets called for determining the sections of the table
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
     
     // Potential usecase for a Delegation for the behavior
+    // A default native delegate method that gets called for every section of the table
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return profiles.count
     }
     
     // Potential usecase for a Delegation for the behavior
+    // A default native delegate method that gets called for every row in the table
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         // Potential usecase for a Delegation or Factory Method pattern for the behavior of cell configuration with Profile class
@@ -71,11 +84,13 @@ class ProfilesTableViewController: UITableViewController, UIAdaptivePresentation
     }
     
     // Potential usecase for a Delegation for the behavior
+    // A default native delegate method that gets called to confirm that the user can swipe to delete
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         return true
     }
     
     // Potential usecase for a Delegation for the behavior
+    // A default native delegate method that gets called when the user swipes to delete
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             
@@ -91,6 +106,7 @@ class ProfilesTableViewController: UITableViewController, UIAdaptivePresentation
     }
     
     // Potential usecase for a Delegation for the behavior
+    // A default native method that triggers prior navigation to another screen
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         if let editor = segue.destination as? ProfileEditorController {
@@ -131,6 +147,7 @@ class ProfilesTableViewController: UITableViewController, UIAdaptivePresentation
     }
     
     // Potential usecase for a Delegation pattern for the behavior
+    // A native delegate method that will execute upon the user swipes down to dismiss
     func presentationControllerWillDismiss(_ presentationController: UIPresentationController) {
         
         if let profilesController = presentationController.delegate as? ProfilesTableViewController {
@@ -141,8 +158,4 @@ class ProfilesTableViewController: UITableViewController, UIAdaptivePresentation
             profilesController.tableView.reloadData()
         }
     }
-    
-//    func presentationControllerDidDismiss(_ presentationController: UIPresentationController) {
-//
-//    }
 }
