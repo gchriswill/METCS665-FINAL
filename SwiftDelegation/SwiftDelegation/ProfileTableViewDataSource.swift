@@ -16,7 +16,7 @@ import UIKit
  */
 class ProfileTableViewDataSource: NSObject, UITableViewDataSource {
     
-    // The collectiong for holding the data at runtime
+    // The collection for holding the data at runtime
     var profiles: [Data] = [Data]()
 
     // A default native delegate method that gets called for determining the sections of the table
