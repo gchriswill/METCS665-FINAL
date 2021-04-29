@@ -21,6 +21,12 @@ class ProfilesTableViewController: UITableViewController, UIAdaptivePresentation
         }
     }
     
+    @IBAction func clearAllAction(_ sender: UIBarButtonItem) {
+        profiles.removeAll()
+        UserDefaults.standard.setValue(profiles, forKey: ProfilesTableViewController.keyId)
+        tableView.reloadSections([0], with: .automatic)
+    }
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
