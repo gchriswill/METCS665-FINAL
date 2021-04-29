@@ -10,7 +10,7 @@ import UIKit
 /**
  DELEGATION COMPONENT: The delegate/data-source object
  
- A class for handling the delegatede behaviour for the `ProfiletableViewController`
+ A class for handling the delegated behaviour for the `ProfileTableViewController`
  The `UITableViewDataSource` is the interfacte where declares the behavior we are delegating to this object.
  This object impelements the behavior conforming with the needs of the controller that is delegating the behavior.
  */
