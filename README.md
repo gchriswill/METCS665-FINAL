@@ -16,6 +16,9 @@ Therefore, in order to review the applied delegation pattern, the reviewer will
 need to checkout the `feature/delegation` branch and proceed with the review  
 accordingly.
 
+Also, please note that the main implementation and approach information for the  
+project is located in the IMPLEMENTATION_DESCRIPTION.md file.
+
 ## Repository:
 
 This repo holds the source code of the met-cs665-assignment-project-gchriswill project for
