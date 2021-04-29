@@ -8,8 +8,11 @@
 import UIKit
 
 /**
+ 
+ DELEGATION COMPONENT: The delegate/validator association holder in form of a controller object.
+ 
  A class controller for managing the view and data of the create/edit screen.
- This class is fully responsible for the creationg and edition of the data and the views updates
+ This class is fully responsible for the creationg and edition of the data and the views updates.
  */
 class ProfileEditorController: UIViewController {
     
@@ -25,30 +28,14 @@ class ProfileEditorController: UIViewController {
     // based on the configuration of the controller
     @IBAction func profileEditAction(_ sender: UIButton) {
         
-        // Potential usecase for a Delegation pattern
-        guard ProfileEditorController.verifyFormatFor(username: userNameTextField.text ?? "") else {
-            return
-        }
-        
-        // Potential usecase for a Delegation pattern
-        guard ProfileEditorController.verifyFormatFor(name: nameTextField.text ?? "") else {
-            return
-        }
-        
-        // Potential usecase for a Delegation pattern
-        guard ProfileEditorController.verifyFormatFor(lastName: lastNameTextField.text ?? "") else {
-            return
-        }
-        
-        // Potential usecase for a Delegation pattern
-        guard ProfileEditorController.verifyFormatFor(email: emailTextField.text ?? "") else {
-            return
-        }
-        
         let editedProfile = Profile(username: userNameTextField.text ?? "",
                               name: nameTextField.text ?? "",
                               lastname: lastNameTextField.text ?? "",
                               email: emailTextField.text ?? "")
+        
+        guard validator?.validate(profile: editedProfile) ?? false else {
+            return
+        }
         
         var profiles = UserDefaults.standard.array(forKey: ProfilesTableViewController.keyId) as? [Data] ?? [Data]()
         
@@ -113,6 +100,17 @@ class ProfileEditorController: UIViewController {
         }
     }
     
+    /**
+     DELEGATION COMPONENT: The delegate/validator associated object.
+     
+     This propety holds the association/reference in form of a variable that is linked via method call `validate`.
+     We can held it as strong reference due to the fact that ARC will manage and release the reference.
+     Here we can declare this variable type as the interface type due to factors:
+     - there is no storyboard dependency
+     - it's manual contruction and implementation
+     */
+    var validator: ProfileDataVerificationDelegate?
+    
     // The property for holding the configuration value of the controller
     var configuration: EditorConfiguration?
     
@@ -122,7 +120,8 @@ class ProfileEditorController: UIViewController {
     // The constructor of the controller
     required init?(coder: NSCoder) {
         super.init(coder: coder)
-//        validatorDelegate = ProfileDataValidator()
+        
+        validator = ProfileDataValidator()
     }
     
     // The function to load and configure the view and the data for the given configuration
@@ -160,92 +159,5 @@ class ProfileEditorController: UIViewController {
         }
         
         loadEditorConfiguration(configuration: config)
-    }
-    
-    /**
-     The following functions are for data validation based on rules that where gathered from the assumptions list
-     */
-    // Potential usecase for a Delegation pattern
-    static func verifyStandartFormat(verstr: String) -> Bool {
-        
-        let cleanValue = verstr.trimmingCharacters(in: .whitespacesAndNewlines)
-        
-        guard !cleanValue.isEmpty else {
-            return false
-        }
-        
-        guard cleanValue.count > 2 else {
-            return false
-        }
-        
-        if cleanValue.first?.isNumber ?? false {
-            return false
-        }
-        
-        return true
-    }
-    
-    // Potential usecase for a Delegation pattern
-    static func verifyFormatFor(username: String) -> Bool {
-        
-        guard verifyStandartFormat(verstr: username) else {
-            return false
-        }
-        
-        guard username.count > 6 else {
-            return false
-        }
-        
-        guard !username.contains(where: { $0.isSymbol }) else {
-            return false
-        }
-        
-        guard !username.contains(where: { $0.isPunctuation }) else {
-            return false
-        }
-        
-        return true
-    }
-    
-    // Potential usecase for a Delegation pattern
-    static func verifyFormatFor(name: String) -> Bool {
-        
-        guard verifyStandartFormat(verstr: name) else {
-            return false
-        }
-        
-        guard !name.contains(where: { $0.isSymbol }) else {
-            return false
-        }
-        
-        return true
-    }
-    
-    // Potential usecase for a Delegation pattern
-    static func verifyFormatFor(lastName: String) -> Bool {
-        
-        guard verifyStandartFormat(verstr: lastName) else {
-            return false
-        }
-        
-        guard !lastName.contains(where: { $0.isSymbol }) else {
-            return false
-        }
-        
-        return true
-    }
-    
-    // Potential usecase for a Delegation pattern
-    static func verifyFormatFor(email: String) -> Bool {
-        
-        guard verifyStandartFormat(verstr: email) else {
-            return false
-        }
-        
-        guard email.filter({ $0 == "@" }).count == 1 else {
-            return false
-        }
-        
-        return true
     }
 }
