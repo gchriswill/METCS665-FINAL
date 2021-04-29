@@ -7,6 +7,10 @@
 
 import UIKit
 
+/**
+ A Custom subclass to suport reference holding and row customization as the default class brings complexity when
+ customizing the views and data and the binders in between
+ */
 class ProfileTableViewCell: UITableViewCell {
 
     override func awakeFromNib() {
