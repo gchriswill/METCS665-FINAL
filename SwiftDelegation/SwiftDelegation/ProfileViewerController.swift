@@ -77,7 +77,7 @@ class ProfileViewerController: UIViewController, UIAdaptivePresentationControlle
         }
     }
     
-    // The function that executes the deletion of a single data point 
+    // The function that executes the deletion of a single data point
     func deleteProfile() {
         // Potential usecase for a Delegation pattern for the behavior of cell configuration with Profile class
         var profiles = UserDefaults.standard.array(forKey: ProfilesTableViewController.keyId) as? [Data] ?? [Data]()
