@@ -12,7 +12,7 @@
         <!--Profiles-->
         <scene sceneID="W6e-pH-LWR">
             <objects>
-                <tableViewController title="Profiles" id="8wd-M3-N6e" customClass="ProfilesTableViewController" customModule="SwiftDelegation" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="ProfilesTableViewController" title="Profiles" useStoryboardIdentifierAsRestorationIdentifier="YES" id="8wd-M3-N6e" customClass="ProfilesTableViewController" customModule="SwiftDelegation" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="joG-tR-Qou">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -82,7 +82,7 @@
         <!--Profile-->
         <scene sceneID="PqT-mV-Avh">
             <objects>
-                <viewController title="Profile" hidesBottomBarWhenPushed="YES" id="KKE-O6-jsC" customClass="ProfileViewerController" customModule="SwiftDelegation" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ProfileViewerController" title="Profile" hidesBottomBarWhenPushed="YES" useStoryboardIdentifierAsRestorationIdentifier="YES" id="KKE-O6-jsC" customClass="ProfileViewerController" customModule="SwiftDelegation" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="OEi-QP-V55">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -157,7 +157,7 @@
         <!--Profile Editor-->
         <scene sceneID="yTF-i8-gOP">
             <objects>
-                <viewController title="Profile Editor" id="0O5-kG-ntn" customClass="ProfileEditorController" customModule="SwiftDelegation" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ProfileEditorController" title="Profile Editor" useStoryboardIdentifierAsRestorationIdentifier="YES" id="0O5-kG-ntn" customClass="ProfileEditorController" customModule="SwiftDelegation" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="7qh-Ym-7W8">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="790"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -268,7 +268,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="2dU-Fo-4Kb"/>
+        <segue reference="g8G-Zf-i0Y"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="person.fill" catalog="system" width="128" height="120"/>
